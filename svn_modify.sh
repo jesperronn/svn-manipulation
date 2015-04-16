@@ -11,10 +11,13 @@ WD=working2
 cd "$START_FOLDER"
 cd "$WD"
 
-for i in 1 2 3 4 5 6 7 8 9 10
+svn log -v > ../log_01_before.txt
+
+for i in 1 2 3 4 5 #6 7 8 9 10
 do
   YEAR=$(echo "1980 + $i" | bc )
   svn propset --revprop -r $i  svn:date "$YEAR-05-01T10:00:00.000000Z"
 done
 
 svn update
+svn log -v > ../log_02_after.txt
